@@ -1,54 +1,89 @@
-# Astro Starter Kit: Basics
+## Data model
 
-```sh
-npm create astro@latest -- --template basics
+```
+item
+{
+    itemName:{en:""}
+    itemValues:[1,2,3,4]
+    score:""
+    scoreName:{en:""}
+    scoreValues:[1,2,3,4]|[4,3,2,1]
+}
 ```
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/basics)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/basics)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/basics/devcontainer.json)
-
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
-
-![just-the-basics](https://github.com/withastro/astro/assets/2244813/a0a5533c-a856-4198-8470-2d67b1d7c554)
-
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src/
-│   ├── components/
-│   │   └── Card.astro
-│   ├── layouts/
-│   │   └── Layout.astro
-│   └── pages/
-│       └── index.astro
-└── package.json
+```
+record
+{
+    date:datetime
+    scores:[Score]
+}
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+```
+user
+{
+    id:uniqueid
+    records[Record]
+    settings:{}
+}
+```
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
 
-Any static assets, like images, can be placed in the `public/` directory.
+## Data
+items = ["Tense", "Angry", "Worn Out", "Unhappy", "Proud", "Lively", "Confused", "Sad", "Active", "On-edge", "Grouchy", "Ashamed", "Energetic", "Hopeless", "Uneasy", "Restless", "Unable to concentrate", "Fatigued", "Competent", "Annoyed", "Discouraged", "Resentful", "Nervous", "Miserable", "Confident", "Bitter", "Exhausted", "Anxious", "Helpless", "Weary", "Satisfied", "Bewildered", "Furious", "Full of Pep", "Worthless", "Forgetful", "Vigorous", "Uncertain about things", "Bushed", "Embarrassed"]
 
-## 🧞 Commands
+scores = [
+    {"score": "TEN", "scoreName": {"en": "Tension"}},
+    {"score": "ANG", "scoreName": {"en": "Anger"}},
+    {"score": "FAT", "scoreName": {"en": "Fatigue"}},
+    {"score": "DEP", "scoreName": {"en": "Depression"}},
+    {"score": "EST", "scoreName": {"en": "Esteem-related Affect"}},
+    {"score": "VIG", "scoreName": {"en": "Vigor"}},
+    {"score": "CON", "scoreName": {"en": "Confusion"}},
+    {"score": "TMD", "scoreName": {"en": "Total Mood Disturbance"}},
+]
 
-All commands are run from the root of the project, from a terminal:
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+## wireflow
+```mermaid
+flowchart LR
 
-## 👀 Want to learn more?
+stat[Statistics page?
+---
+If user has saved records
+in localstorage] -->
+form[questionnaire
+aslso contain about header
+and links footer] -->
+result[resultPage
+---
+include statistics if possible] -->
+email[sendEmail
+with stats]
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+```
+
+items =[
+    {
+        itemName:{1|2|3|4}
+    }
+]
+
+scores = [
+    scoreName: {
+        itemName:{default | reversed}
+        itemName:reversed
+    }
+]
+
+score = for items in scoreName:
+    items.
+
+
+scores[]
+for items:
+    scores[scoreAbreviation] += scoreValue
+
+items.map
+inputName = itemName
+range = scoreValues(1,2,3,4)
