@@ -1,4 +1,7 @@
 ---
+import { setBasePath } from "@shoelace-style/shoelace/dist/utilities/base-path.js";
+setBasePath("dist/assets");
+
 interface Props {
 	title: string;
 }
@@ -6,8 +9,12 @@ interface Props {
 const { title } = Astro.props;
 ---
 
+<script>
+    import("@shoelace-style/shoelace/dist/themes/dark.css");
+</script>
+
 <!doctype html>
-<html lang="en">
+<html class="sl-theme-dark" lang="en">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="description" content="Astro description" />
@@ -34,7 +41,7 @@ const { title } = Astro.props;
 	}
 	html {
 		font-family: system-ui, sans-serif;
-		background: #13151a;
+		background: var(--sl-color-neutral-0);
 		background-size: 224px;
 	}
 	code {
