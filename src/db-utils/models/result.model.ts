@@ -13,4 +13,6 @@ const resultSchema = new Schema({
   },
 } as const);
 
+// models.Result ? models.Result :
+
 export default models.Result || model("Result", resultSchema);
