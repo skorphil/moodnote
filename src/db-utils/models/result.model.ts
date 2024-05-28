@@ -13,4 +13,4 @@ const resultSchema = new Schema({
   },
 } as const);
 
-export default models.Record || model("Result", resultSchema);
+export default models.Result || model("Result", resultSchema);

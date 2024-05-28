@@ -24,5 +24,4 @@ const moodStateSchema = new Schema({
   },
 } as const);
 
-export default (models.Record as Model<any, {}>) ||
-  (model("Session", moodStateSchema) as Model<any, {}>);
+export default models.MoodState || model("MoodState", moodStateSchema);

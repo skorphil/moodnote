@@ -38,7 +38,8 @@ export async function POST(context: APIContext): Promise<Response> {
     dimension.score += dimensionScore;
   }
 
-  createResult(result);
+  await createResult(result);
+
   // console.log(formData);
   // await createUser({
   //   _id: userId,
