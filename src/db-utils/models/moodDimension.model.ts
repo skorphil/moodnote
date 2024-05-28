@@ -16,4 +16,5 @@ export const moodDimensionSchema = new Schema(
   { _id: false }
 );
 
-export default models.Record || model("Session", moodDimensionSchema);
+export default models.MoodDimension ||
+  model("MoodDimension", moodDimensionSchema);
