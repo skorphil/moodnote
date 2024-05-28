@@ -1,5 +1,4 @@
 import mongoose from "mongoose";
-import type { Model } from "mongoose";
 const { Schema, model, models } = mongoose;
 
 /**
@@ -24,4 +23,4 @@ const moodStateSchema = new Schema({
   },
 } as const);
 
-export default models.MoodState || model("MoodState", moodStateSchema);
+// export default models.MoodState || model("MoodState", moodStateSchema);
