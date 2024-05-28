@@ -12,8 +12,10 @@
   "dependencies": {
     "@astrojs/check": "^0.7.0",
     "@astrojs/cloudflare": "^10.2.6",
+    "@microsoft/tsdoc": "^0.14.2",
     "@shoelace-style/shoelace": "^2.15.1",
     "astro": "^4.9.1",
+    "mongoose": "^8.4.0",
     "typescript": "^5.4.5"
   },
   "devDependencies": {

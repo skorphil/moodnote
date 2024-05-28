@@ -1,0 +1,67 @@
+---
+import Item from "./Item.astro";
+
+interface Props {
+  states: any[];
+  counter: string;
+}
+
+const { states, counter } = Astro.props;
+
+// TODO internationalization
+---
+
+<section>
+  <div class="flex section-heading">
+    <span class="counter">{counter}</span>
+    <div class="flex scales">
+      <span>Not at all</span>
+      <div class="line"></div>
+      <span>Extreme</span>
+    </div>
+  </div>
+  <div class="flex state-list">
+    {states.map((item, i) => <Item name={item} bg={i % 2 === 0} />)}
+  </div>
+</section>
+
+<style>
+  .flex {
+    display: flex;
+  }
+
+  .scales {
+    flex-direction: row;
+    width: 100%;
+    align-items: center;
+    gap: var(--sl-spacing-x-small);
+  }
+
+  .line {
+    flex-grow: 1;
+    height: 2px;
+    background-color: var(--sl-color-gray-300);
+  }
+
+  .counter {
+    margin-right: var(--sl-spacing-medium);
+    width: 108px;
+    flex-shrink: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .section-heading {
+    flex-direction: row;
+    align-items: center;
+    color: var(--sl-color-gray-600);
+  }
+
+  .state-list {
+    flex-direction: column;
+    margin-top: 24px;
+    margin-bottom: 40px;
+    gap: 20px;
+  }
+</style>

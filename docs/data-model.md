@@ -7,7 +7,7 @@ server[(server)] -->
 score["[state]"]
 ```
 
-Mood `state` represent feeling, used in Abbreviated POMS questionnaire, which user has to administer [0-4].
+`moodState` represent feeling,listed in Abbreviated POMS questionnaire, which user has to evaluate.
 
 Multiple `state`s are used to calculate specific mood `dimension`. Some `state`s have inverse affect on `dimension`, 
 i.e. `stateScore == 3` adds `1` to `dimensionScore`.

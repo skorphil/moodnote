@@ -1,10 +1,11 @@
 ---
 interface Props {
   name: string;
-  bg?:boolean;
+  bg?: boolean;
+  scaleLength?: number;
 }
 
-const { name, bg } = Astro.props;
+const { name, bg, scaleLength = 4 } = Astro.props;
 ---
 
 <script>
@@ -20,12 +21,12 @@ const { name, bg } = Astro.props;
   </div>
   <div class="flex full-width">
     <span class="value-label">select value</span>
-    <sl-radio-group class="group full-width">
-      <sl-radio value="0"></sl-radio>
-      <sl-radio value="1"></sl-radio>
-      <sl-radio value="2"></sl-radio>
-      <sl-radio value="3"></sl-radio>
-      <sl-radio value="4"></sl-radio>
+    <sl-radio-group class="group full-width" value="0" name={name}>
+      {
+        Array.from({ length: scaleLength + 1 }, (_, i) => (
+          <sl-radio value={i} />
+        ))
+      }
     </sl-radio-group>
   </div>
 </div>
@@ -80,7 +81,7 @@ const { name, bg } = Astro.props;
     font-size: 16px;
     width: 100px;
     flex-shrink: 0;
-    margin-right:24px;
+    margin-right: 24px;
     color: var(--sl-color-gray-600);
   }
 
