@@ -1,7 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import FormSection from "../components/FormSection.astro";
-import { states } from "../db/states";
+import { emotions } from "../poms-data/states";
 ---
 
 <Layout title="moodnote">
@@ -15,7 +15,7 @@ import { states } from "../db/states";
     </section>
     <h2>How do you feel <strong>right now?</strong></h2>
     <form method="post" action="/api/record">
-      <FormSection states={states} counter="8 of 40" />
+      <FormSection states={emotions} counter="8 of 40" />
       <sl-button type="submit">submit</sl-button>
     </form>
   </main>

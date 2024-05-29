@@ -6,12 +6,11 @@
     "dev": "astro dev --host 192.168.8.183",
     "start": "astro dev",
     "build": "astro check && astro build",
-    "preview": "wrangler pages dev ./dist --compatibility-flags='nodejs_compat'",
+    "preview": "astro preview",
     "astro": "astro"
   },
   "dependencies": {
     "@astrojs/check": "^0.7.0",
-    "@astrojs/cloudflare": "^10.2.6",
     "@astrojs/node": "^8.2.5",
     "@microsoft/tsdoc": "^0.14.2",
     "@shoelace-style/shoelace": "^2.15.1",
