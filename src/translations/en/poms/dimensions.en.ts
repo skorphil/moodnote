@@ -1,6 +1,6 @@
-import type { DimensionsTranslations } from "../../../types";
+import { MoodDimensionsTranslationsWithTmd } from "../../../types";
 
-const dimensions: DimensionsTranslations = {
+const dimensions: MoodDimensionsTranslationsWithTmd = {
   "dimension.TEN": "Tension",
   "dimension.ANG": "Anger",
   "dimension.FAT": "Fatigue",

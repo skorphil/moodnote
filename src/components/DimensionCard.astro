@@ -1,0 +1,40 @@
+---
+import type { MoodDimension } from "../poms-data/mood-dimensions";
+import { useTranslations, getLangFromUrl } from "../lib/translate";
+interface Props {
+  dimension: MoodDimension;
+  score: number;
+  bg?: boolean;
+}
+
+const { dimension, score, bg } = Astro.props;
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<li class=`link-card ${bg && "bg"}`>
+  <h3>
+    {t(`dimension.${dimension}`)}
+  </h3>
+  <span>{score}</span>
+</li>
+
+<style>
+  .link-card {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--sl-spacing-small) var(--sl-spacing-medium);
+    background-image: none;
+    background-size: 400%;
+    background-position: 100%;
+  }
+
+  .link-card h3 {
+    margin: 0;
+  }
+  .bg {
+    background-color: #292929;
+  }
+</style>

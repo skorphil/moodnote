@@ -1,11 +1,23 @@
 ---
+import { useTranslations, getLangFromUrl } from "../lib/translate";
+import { Emotion, Translations } from "../types";
+
 interface Props {
-  name: string;
+  name: Emotion;
   bg?: boolean;
   scaleLength?: number;
 }
 
 const { name, bg, scaleLength = 4 } = Astro.props;
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const scaleTranslations = {
+  0: t("scale.0"),
+  1: t("scale.1"),
+  2: t("scale.2"),
+  3: t("scale.3"),
+  4: t("scale.4"),
+};
 ---
 
 <script>
@@ -13,15 +25,35 @@ const { name, bg, scaleLength = 4 } = Astro.props;
   import("@shoelace-style/shoelace/dist/components/button/button.js");
   import("@shoelace-style/shoelace/dist/components/radio/radio.js");
   import("@shoelace-style/shoelace/dist/components/radio-group/radio-group.js");
+
+  class EmotionItem extends HTMLElement {
+    constructor() {
+      super();
+      const scalesTranslation = this.dataset.scales
+        ? JSON.parse(this.dataset.scales)
+        : null;
+      const button = this.querySelector(`sl-radio-group`);
+      const scale = this.querySelector(".value-label");
+
+      button?.addEventListener("click", () => {
+        const val = button.value;
+        scalesTranslation && scale
+          ? (scale.textContent = scalesTranslation[val])
+          : false;
+        scale?.classList.add("warning-text");
+      });
+    }
+  }
+  customElements.define("emotion-item", EmotionItem);
 </script>
 
-<div>
+<emotion-item data-scales={JSON.stringify(scaleTranslations)}>
   <div>
-    <span class="full-width item-name">{name}</span>
+    <span class="full-width item-name">{t(`emotion.${name}`)}</span>
   </div>
   <div class="flex full-width">
-    <span class="value-label">select value</span>
-    <sl-radio-group class="group full-width" value="0" name={name}>
+    <span class="value-label" id="scale">{t("scale.null")}</span>
+    <sl-radio-group required class="group full-width" id={name} name={name}>
       {
         Array.from({ length: scaleLength + 1 }, (_, i) => (
           <sl-radio value={i} />
@@ -29,20 +61,16 @@ const { name, bg, scaleLength = 4 } = Astro.props;
       }
     </sl-radio-group>
   </div>
-</div>
+</emotion-item>
 
 <style>
   sl-radio::part(label) {
     display: none;
   }
 
-  /* sl-radio::part(base) {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width:100%;
-    height:40px;
-  } */
+  span.warning-text {
+    color: var(--sl-color-grey-900);
+  }
 
   .flex {
     display: flex;

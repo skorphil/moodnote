@@ -6,6 +6,7 @@ const scale: ScaleTranslations = {
   "scale.2": "Moderate",
   "scale.3": "Quite A Lot",
   "scale.4": "Extremely",
+  "scale.null": "Not selected",
 };
 
 export default scale;

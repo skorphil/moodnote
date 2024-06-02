@@ -1,0 +1,26 @@
+---
+import type { MoodDimension } from "../../poms-data/mood-dimensions";
+import Layout from "../../layouts/Layout.astro";
+import DimensionCard from "../../components/DimensionCard.astro";
+
+const result = JSON.parse(Astro.url.searchParams.get("result") || "");
+console.log("params:", result);
+---
+
+<Layout title="moodnote">
+  <main>
+    <main>
+      <a class="logo" href="/">💙 moodnote.cc</a>
+      <h1>Result</h1>
+      {
+        Object.entries(result).map(([dimension, score], id) => (
+          <DimensionCard
+            dimension={dimension as MoodDimension}
+            score={score as number}
+            bg={id % 2 === 0}
+          />
+        ))
+      }
+    </main>
+  </main>
+</Layout>

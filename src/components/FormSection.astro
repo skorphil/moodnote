@@ -1,27 +1,28 @@
 ---
 import Item from "./Item.astro";
+import { useTranslations, getLangFromUrl } from "../lib/translate";
 
 interface Props {
-  states: any[];
+  emotions: any[];
   counter: string;
 }
 
-const { states, counter } = Astro.props;
-
-// TODO internationalization
+const { emotions, counter } = Astro.props;
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 ---
 
 <section>
   <div class="flex section-heading">
     <span class="counter">{counter}</span>
     <div class="flex scales">
-      <span>Not at all</span>
+      <span>{t("scale.0")}</span>
       <div class="line"></div>
-      <span>Extreme</span>
+      <span>{t("scale.4")}</span>
     </div>
   </div>
   <div class="flex state-list">
-    {states.map((item, i) => <Item name={item} bg={i % 2 === 0} />)}
+    {emotions.map((item, i) => <Item name={item} bg={i % 2 === 0} />)}
   </div>
 </section>
 
