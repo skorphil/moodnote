@@ -1,6 +1,6 @@
 import { defineConfig } from "astro/config";
 import { viteStaticCopy } from "vite-plugin-static-copy";
-import cloudflare from "@astrojs/cloudflare";
+// import cloudflare from "@astrojs/cloudflare";
 import zeabur from "@zeabur/astro-adapter/serverless";
 
 import node from "@astrojs/node";
