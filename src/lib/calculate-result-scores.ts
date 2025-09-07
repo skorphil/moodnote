@@ -1,11 +1,8 @@
 import type { MoodDimension } from "../poms-data/mood-dimensions";
 import { moodDimensionsScoring } from "../poms-data/mood-dimensions";
+import type { ResultScores, DimensionsScores, TmdScore } from "../types";
 
-type DimensionsScores = Record<MoodDimension, number>;
-type TmdScore = { TMD: number };
-type ResultScores = DimensionsScores & TmdScore;
-
-export function calculateResult(formData: FormData): ResultScores {
+export function calculateResultScores(formData: FormData): ResultScores {
   const dimensions = Object.entries(moodDimensionsScoring);
 
   let dimensionsScores = {} as DimensionsScores;

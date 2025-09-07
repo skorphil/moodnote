@@ -8,6 +8,9 @@ export {
   EmotionsSections,
   MoodDimension,
   Emotion,
+  ResultScores,
+  DimensionsScores,
+  TmdScore,
 };
 
 type MoodDimensionsTranslations = Record<`dimension.${MoodDimension}`, string>;
@@ -41,6 +44,10 @@ type ScaleTranslations = {
 type EmotionsSections = {
   [key: string]: Emotion[];
 };
+
+type DimensionsScores = Record<MoodDimension, number>;
+type TmdScore = { TMD: number };
+type ResultScores = DimensionsScores & TmdScore;
 
 // type EmotionName = (typeof emotionNames)[number];
 // type EmotionScoring = {

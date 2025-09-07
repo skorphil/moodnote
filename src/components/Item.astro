@@ -21,10 +21,10 @@ const scaleTranslations = {
 ---
 
 <script>
-  import("@shoelace-style/shoelace/dist/components/range/range.js");
-  import("@shoelace-style/shoelace/dist/components/button/button.js");
-  import("@shoelace-style/shoelace/dist/components/radio/radio.js");
-  import("@shoelace-style/shoelace/dist/components/radio-group/radio-group.js");
+  import "@shoelace-style/shoelace/dist/components/range/range.js";
+  import "@shoelace-style/shoelace/dist/components/button/button.js";
+  import "@shoelace-style/shoelace/dist/components/radio/radio.js";
+  import "@shoelace-style/shoelace/dist/components/radio-group/radio-group.js";
 
   class EmotionItem extends HTMLElement {
     constructor() {
@@ -53,7 +53,13 @@ const scaleTranslations = {
   </div>
   <div class="flex full-width">
     <span class="value-label" id="scale">{t("scale.null")}</span>
-    <sl-radio-group required class="group full-width" id={name} name={name}>
+    <sl-radio-group
+      required
+      class="group full-width"
+      value="2"
+      id={name}
+      name={name}
+    >
       {
         Array.from({ length: scaleLength + 1 }, (_, i) => (
           <sl-radio value={i} />
